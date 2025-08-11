@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DIVINE — Login & Signup</title>
+
+  <style>
+    /* ------------------------------
+       THEME COLORS & VARIABLES
+       ------------------------------ */
+    :root {
+      --bg-dark: #121212;
+      --bg-card: #1E1E1E;
+      --text-light: #F1F1F1;
+      --text-muted: #B0B0B0;
+      --accent: #00ADB5;
+      --accent-2: #4ECCA3;
+      --radius: 14px;
+      --shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    /* ------------------------------
+       PAGE LAYOUT
+       ------------------------------ */
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      width: 900px;
+      height: 550px;
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: flex;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ------------------------------
+       FORM SECTIONS
+       ------------------------------ */
+    .form-container {
+      width: 50%;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: transform 0.6s ease-in-out;
+    }
+
+    .login-container {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .signup-container {
+      background: rgba(255, 255, 255, 0.02);
+      position: absolute;
+      right: 0;
+      transform: translateX(100%);
+    }
+
+    /* Active state (when signup is visible) */
+    .container.active .login-container {
+      transform: translateX(-100%);
+    }
+
+    .container.active .signup-container {
+      transform: translateX(0);
+    }
+
+    /* ------------------------------
+       LOGO
+       ------------------------------ */
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      width: 160px;
+    }
+
+    /* ------------------------------
+       FORM ELEMENTS
+       ------------------------------ */
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .field {
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-light);
+      outline: none;
+    }
+
+    input:focus {
+      border: 1px solid var(--accent);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      border: none;
+      color: #081016;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    /* ------------------------------
+       SWITCH LINK
+       ------------------------------ */
+    .switch {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 0.9rem;
+    }
+
+    .switch a {
+      color: var(--accent);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .switch a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="form-container">
+    <!-- LOGIN FORM -->
+    <div class="form-container login-container">
+      <div class="logo">
+        <!-- Replace with your DIVINE logo -->
+        <img src="/logo.png" alt="DIVINE Logo">
+      </div>
+      <h2>Login</h2>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" placeholder="you@example.com">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" placeholder="••••••••">
+      </div>
+      <button>Login</button>
+      <div class="switch">
+        Don’t have an account? <a id="show-signup">Sign up</a>
+      </div>
+    </div>
+
+    <!-- SIGNUP FORM -->
+    <div class="form-container signup-container">
+      <div class="logo">
+        <img src="/logo.png" alt="DIVINE Logo">
+      </div>
+      <h2>Sign Up</h2>
+      <div class="field">
+        <label>Full Name</label>
+        <input type="text" placeholder="John Doe">
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" placeholder="you@example.com">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" placeholder="••••••••">
+      </div>
+      <button>Sign Up</button>
+      <div class="switch">
+        Already have an account? <a id="show-login">Login</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript to toggle forms with animation
+    const container = document.getElementById('form-container');
+    const showSignup = document.getElementById('show-signup');
+    const showLogin = document.getElementById('show-login');
+
+    showSignup.addEventListener('click', () => {
+      container.classList.add('active');
+    });
+
+    showLogin.addEventListener('click', () => {
+      container.classList.remove('active');
+    });
+  </script>
+
+</body>
+</html>
